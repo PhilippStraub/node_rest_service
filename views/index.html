@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Doc</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+    <header>
+        <h1 class="display-4" id="head">API Doc</h1>
+        <h1 class="display-4" id="subhead">for REST Service Prüfungen</h1>
+        
+    </header>
+    <main>
+        <div class="card" style="width: 18rem;">
+            <img src="/static/get_dark.png" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Get</h5>
+              <h6 class="card-subtitle mb-2 text-muted">Alle Prüfungen</h6>
+              <p class="card-text">
+                Um deine bereits angelegten Prüfungen abrufen zu können, musst du nichts weiter als
+                <a href="#">/api/pruefungen</a>
+                aufrufen.
+              </p>
+              <br>
+              <h6 class="card-subtitle mb-2 text-muted">Eine Prüfung</h6>
+              <p class="card-text">
+                Möchtest du eine einzelne Prüfung betrachten, sende ihre id am Ende folgender Adresse:
+                <a href="#">/api/pruefungen/</a>
+              </p>
+            </div>
+          </div>
+
+          <div class="card" style="width: 18rem;">
+            <img src="/static/post_dark.png" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Post</h5>
+              <p class="card-text">
+                Wenn du eine neue Prüfung anlegen möchtest, musst eine POST Request an <a href="#">/api/pruefungen</a> schicken. 
+                Im Body deiner Anfrage übergibst du ein JSON-Objekt. Dieses muss folgende Struktur aufweisen:<br>
+                <div id="code">
+                  <code id="codetext">
+                    {
+                    <div class="tab">
+                      "fach":"Verteilte Systeme",<br>
+                      "art":"Portfolio",<br>
+                      "datum":"4.3.2020",<br>
+                      "ort":"Raum 3.2.1"<br>
+                    </div>
+                    }
+                  </code><br>
+                </div><br>
+                Dabei ist jedes der Felder ein Pflichtfeld, abgesehen von "ort".
+              </p>
+            </div>
+          </div>
+
+          <div class="card" style="width: 18rem;">
+            <img src="/static/put_dark.png" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Put</h5>
+              <p class="card-text">
+                Falls eine Prüfung geupdated werden muss, schicke eine PUT Request an <a href="#">/api/pruefungen/</a>
+                . Damit die richtige Prüfung gefunden werden kann, musst du die entsprechende id der Prüfung am Ende der Adresse übergeben.
+                Anschließend sendest du diese mitsamt deiner aktualisierten Daten (JSON-Objekt, wie im Code-Beispiel unter "Post") an die Schnittstelle.
+                Beachte das du für alle Parameter bis auf "fach" neue Werte übergeben kannst.
+              </p>
+            </div>
+          </div>
+
+          <div class="card" style="width: 18rem;">
+            <img src="/static/delete_dark.png" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Delete</h5>
+              <p class="card-text">
+                Um eine Prüfung aus der Datenbank zu entfernen, wird ein DELETE Request verlangt. 
+                Übergebe dazu die entsprechende id der Prüfung am Ende folgender Adresse: <a href="#">/api/pruefungen/</a>
+              </p>
+            </div>
+          </div>
+
+    </main>
+   
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+</html>
