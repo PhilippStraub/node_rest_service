@@ -4,7 +4,7 @@ Pruefung = require('./pruefung-model');
 
 //Index aufrufen
 exports.index = (req, res) => {
-    Pruefung.get((err, pruefungen) => {
+    Pruefung.find({}, (err, pruefungen) => {
         if (err) {
             res.json({
                 status: "error",
@@ -23,39 +23,31 @@ exports.index = (req, res) => {
 //Neue Prüfung erstellen
 exports.new = (req, res) => {
     //Prüfung schon vorhanden?
-    Pruefung.find({ fach: req.body.fach, art: req.body.art, datum: req.body.datum}, (err, pruefungData) => {
+    Pruefung.find({ fach: req.body.fach, art: req.body.art, 
+    datum: req.body.datum},(err, pruefungData) => {
         if(!pruefungData.length){
-
             //Neue Prüfung wird erstellt
             var pruefungData = new Pruefung();
             pruefungData.fach = req.body.fach;
             pruefungData.art = req.body.art;
             pruefungData.datum = req.body.datum;
             pruefungData.ort = req.body.ort;
-
             //Prüfung speichern und Error check machen
             pruefungData.save((err) => {
                 if (err) {
                     res.json({
                         status: "error",
-                        message: err,
-                    });
-                }
+                        message: err
+                    });}
                 res.json({
                     message: 'Neue Prüfung erstellt!',
                     data: pruefungData
-                });
-            });
+                });});
         } else {
             res.json({
                 status: "error",
-                message: "Diese Prüfung hast du bereits angelegt.",
-            });
-        }
-        
-    });
- 
-};
+                message: "Diese Prüfung hast du bereits angelegt."
+            });}});};
 
 
 //Prüfung einsehen
@@ -64,7 +56,7 @@ exports.view = (req, res) => {
         if (err) {
             res.json({
                 status: "error",
-                message: err,
+                message: err
             });
         }
         res.json({
@@ -108,7 +100,7 @@ exports.update = (req, res) => {
 
 //Prüfung löschen
 exports.delete = function (req, res) {
-    Pruefung.remove({
+    Pruefung.deleteOne({
         _id: req.params.pruefungData_id
     }, (err, pruefungData) => {
         if (err) {

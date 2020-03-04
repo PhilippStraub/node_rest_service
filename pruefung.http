@@ -1,0 +1,30 @@
+POST http://localhost:9020/api/pruefungen HTTP/1.2
+content-type: application/json
+
+{
+	"fach":"Vert. Systeme",
+	"art":"Kurztest",
+	"datum":"19.03.2020",
+	"ort":"R3.19"
+}
+
+###
+
+GET http://localhost:9020/api/pruefungen/5e5fab7fadaae74ea426e417 HTTP/1.2
+Accept: application/json
+
+
+###
+
+DELETE http://localhost:9020/api/pruefungen/5e5e93e5f0cea65d9c0d8ad2 HTTP/1.2
+
+###
+PUT http://localhost:9020/api/pruefungen/5e5fab7fadaae74ea426e417 HTTP/1.2
+content-type: application/json
+
+{
+	"fach":"Vert. Systeme",
+	"art":"Portfolio",
+	"datum":"19.03.2020",
+	"ort":"R3.19"
+}

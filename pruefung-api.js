@@ -2,13 +2,6 @@
 //einen URL-Pfad und eine Funktion, die zur Handhabung dieses Musters aufgerufen wird, verbindet.
 var router = require('express').Router();
 
-router.get('/', function (req, res) {
-    res.json({
-        status: 'success',
-        message: 'API available'
-    });
-});
-
 
 //Controller einbinden
 var pruefungController = require('./pruefung-controller');
